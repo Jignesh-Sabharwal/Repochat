@@ -53,3 +53,4 @@ Thumbs.db
 # Local Data and tests
 cloned/
 test.py
+chroma_db/
