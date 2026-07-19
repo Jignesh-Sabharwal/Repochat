@@ -3,7 +3,7 @@ import shutil
 from git import Repo
 
 # Clone GitHub Repo
-def clone_rep(repo_url :str, clone_dir :str = "cloned/current")-> str:
+def clone_repo(repo_url :str, clone_dir :str = "cloned/current")-> str:
     if os.path.exists(clone_dir):
         shutil.rmtree(clone_dir)
     Repo.clone_from(repo_url, clone_dir, depth =1)
