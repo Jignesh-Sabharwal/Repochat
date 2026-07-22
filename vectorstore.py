@@ -1,9 +1,14 @@
+import os
+import shutil
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 
 EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 
 def build_vectorstore(chunks, persist_dir: str = "chroma_db"):
+    if os.path.exists(persist_dir):
+        shutil.rmtree(persist_dir)
+        
     embeddings = HuggingFaceEmbeddings(model_name=EMBED_MODEL)
     vectordb = Chroma.from_documents(
         documents=chunks,
